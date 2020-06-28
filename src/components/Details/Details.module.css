@@ -23,7 +23,7 @@
 .posterImg {
   height: 350px;
   object-fit: contain;
-  margin-bottom: 0.6rem;
+  margin-bottom: 1rem;
 }
 
 .info h1 {
@@ -60,5 +60,9 @@
 
   .poster {
     align-items: flex-start;
+  }
+
+  .posterImg {
+    margin-bottom: 0.7rem;
   }
 }

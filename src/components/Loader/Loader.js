@@ -4,7 +4,7 @@ import classes from './Loader.module.css';
 
 const Loader = () => (
   <div className={classes.wrapper}>
-    <div className={classes.loader} />;
+    <div className={classes.loader} />
   </div>
 );
 
