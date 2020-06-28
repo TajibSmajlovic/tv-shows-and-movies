@@ -25,10 +25,11 @@ const Tabs = ({ selected, handleClick, search, children }) => {
 
       {children &&
         children.map((elem, index) => {
-          const { tabKey } = elem.props;
+          const { label, tabKey } = elem.props;
 
           return (
             <div key={index} className={selected !== tabKey ? classes.none : ''}>
+              <h1>{label}</h1>
               {children[index]}
             </div>
           );

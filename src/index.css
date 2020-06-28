@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
+
 :root {
   --white: #ffffff;
   --red: #b00;
@@ -11,6 +13,5 @@ body {
   margin: 0;
   padding: 0;
   font-size: 100%;
-  font-family: 'Open Sans', sans-serif;
-  background-color: #fff;
+  font-family: 'Roboto', sans-serif;
 }

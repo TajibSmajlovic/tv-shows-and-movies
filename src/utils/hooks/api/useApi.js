@@ -10,6 +10,7 @@ const useApi = (url, { initialFetch = true, client = API, verb = HTTP_VERBS.GET,
 
   const execute = useCallback(() => {
     let route = null;
+
     switch (verb) {
       case HTTP_VERBS.GET:
         route = client.get(url);
@@ -29,6 +30,7 @@ const useApi = (url, { initialFetch = true, client = API, verb = HTTP_VERBS.GET,
       try {
         const response = await execute(obj || data);
         const items = getData(response);
+
         setResult(items);
         setError(null);
         setLoading(false);

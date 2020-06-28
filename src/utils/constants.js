@@ -5,17 +5,6 @@ export const POSTER_PLACEHOLDER = `${process.env.PUBLIC_URL}/assets/img/poster-p
 
 export const HTTP_VERBS = {
   GET: 'GET',
-  POST: 'POST',
-  PUT: 'PUT',
-  DELETE: 'DELETE',
-  PATCH: 'PATCH',
-};
-
-export const IMAGE_SIZES = {
-  SMALL: 'w300',
-  MEDIUM: 'w780',
-  LARGE: 'w1280',
-  ORIGINAL: 'original',
 };
 
 export const CARD_SIZES = {
@@ -28,9 +17,19 @@ export const EVENT_TAB_KEYS = {
   MOVIES: 'movie',
 };
 
+export const IMAGE_SIZES = {
+  SMALL: 'w300',
+  MEDIUM: 'w780',
+  LARGE: 'w1280',
+  ORIGINAL: 'original',
+};
+
 export const API_ENDPOINTS = {
   TOP_RATED_MOVIES: `movie/top_rated?api_key=${API_KEY}`,
   TOP_RATED_TV_SHOWS: `tv/top_rated?api_key=${API_KEY}`,
+  TV_SHOW: id => `tv/${id}?api_key=${API_KEY}&append_to_response=videos`,
+  MOVIE: id => `movie/${id}?api_key=${API_KEY}&append_to_response=videos`,
   SEARCH: (name, searchvalue) => `search/${name}?api_key=${API_KEY}&query=${searchvalue}`,
-  IMAGE: (imgSize, imgUrl) => `https://image.tmdb.org/t/p/${imgSize}/${imgUrl}`,
+  IMAGE: (imgUrl, imgSize = IMAGE_SIZES.ORIGINAL) => `https://image.tmdb.org/t/p/${imgSize}/${imgUrl}`,
+  YOUTUBE: key => `https://www.youtube.com/embed/${key}`,
 };

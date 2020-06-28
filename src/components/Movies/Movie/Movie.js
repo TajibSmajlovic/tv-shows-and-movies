@@ -6,9 +6,9 @@ import routes, { generateLink } from 'utils/routes';
 import { CenteredContent, Details, Loader } from 'components';
 import { API_ENDPOINTS } from 'utils/constants';
 
-const Show = () => {
+const Movie = () => {
   const { id } = useParams();
-  const [{ result, loading }] = useApi(API_ENDPOINTS.TV_SHOW(id));
+  const [{ result, loading }] = useApi(API_ENDPOINTS.MOVIE(id));
   const history = useHistory();
 
   const onReturn = () => history.push(generateLink(routes.ROOT));
@@ -30,4 +30,4 @@ const Show = () => {
   );
 };
 
-export default Show;
+export default Movie;

@@ -1,0 +1,64 @@
+.backdropImg {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.2;
+}
+
+.header {
+  margin: 1.5rem 0;
+}
+
+.poster {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.posterImg {
+  height: 350px;
+  object-fit: contain;
+  margin-bottom: 0.6rem;
+}
+
+.info h1 {
+  color: var(--dark);
+  margin: 0;
+  font-size: 2rem;
+}
+
+.info span {
+  color: var(--dark);
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+.info p {
+  color: var(--dark);
+  font-size: 1.2rem;
+  text-align: justify;
+}
+
+@media (min-width: 768px) {
+  .main {
+    display: flex;
+    margin-bottom: 4rem;
+  }
+
+  .header {
+    margin: 2rem 0 3rem 0;
+  }
+
+  .info {
+    padding: 0 2rem;
+  }
+
+  .poster {
+    align-items: flex-start;
+  }
+}

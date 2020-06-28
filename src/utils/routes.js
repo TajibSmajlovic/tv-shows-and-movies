@@ -1,8 +1,9 @@
-import React from 'react';
+import { lazy } from 'react';
 import { generatePath } from 'react-router';
 
-const Events = React.lazy(() => import('components/Events/Events'));
-const Show = React.lazy(() => import('components/Shows/Show/Show'));
+const Events = lazy(() => import('components/Events/Events'));
+const Show = lazy(() => import('components/Shows/Show/Show'));
+const Movie = lazy(() => import('components/Movies/Movie/Movie'));
 
 const routes = {
   ROOT: {
@@ -17,9 +18,15 @@ const routes = {
     exact: true,
     Component: Show,
   },
+  MOVIE: {
+    id: 'MOVIE',
+    path: '/movie/:id',
+    exact: true,
+    Component: Movie,
+  },
 };
 
-export function generateLink(routeOrRouteId, params) {
+export const generateLink = (routeOrRouteId, params) => {
   let route;
 
   if (typeof routeOrRouteId === 'string') {
@@ -35,6 +42,6 @@ export function generateLink(routeOrRouteId, params) {
   }
 
   return generatePath(route.path, params);
-}
+};
 
 export default routes;

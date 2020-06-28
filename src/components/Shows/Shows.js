@@ -16,28 +16,27 @@ const Shows = ({ tabKey }) => {
 
   const goToShow = id => history.push(generateLink(routes.TV_SHOW, { id }));
 
-  // Add comments
   useEffect(() => {
     if (selectedTab === tabKey) fetch();
   }, [fetch, selectedTab, tabKey]);
 
-  // implement when there aro no records
-
   return loading ? (
     <Loader />
   ) : (
-    <div className={classes.wrapper}>
+    <>
       {searchLoading ? (
         <Loader />
       ) : (
-        searchResult && searchResult.results && <SearchedData data={searchResult.results} />
+        searchResult && searchResult.results && <SearchedData data={searchResult.results} onClick={goToShow} />
       )}
-      {result &&
-        result.results &&
-        firstTenElements(result?.results).map(r => (
-          <Card onClick={() => goToShow(r.id)} key={r.id} title={r.name} imgUrl={r.poster_path} />
-        ))}
-    </div>
+      <div className={classes.wrapper}>
+        {result &&
+          result.results &&
+          firstTenElements(result?.results).map(r => (
+            <Card key={r.id} title={r.name} imgUrl={r.poster_path} onClick={() => goToShow(r.id)} />
+          ))}
+      </div>
+    </>
   );
 };
 
