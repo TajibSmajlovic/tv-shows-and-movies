@@ -1,0 +1,14 @@
+.title {
+  padding: 0 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.44;
+  color: var(--dark);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.centered {
+  text-align: center;
+}

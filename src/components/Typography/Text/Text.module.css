@@ -1,0 +1,9 @@
+.text {
+  padding: 0 0.6rem;
+  font-size: 0.875rem;
+  line-height: 1.2;
+  color: var(--grey);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
