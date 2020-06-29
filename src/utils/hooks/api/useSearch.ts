@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 
-import useApi from 'utils/hooks/api/useApi';
+import { useApi } from 'utils/hooks/api';
 import { API_ENDPOINTS } from 'utils/constants';
 
-const useSearch = (key, searchValue) => {
-  const [{ result, loading }, fetch, setResult] = useApi(API_ENDPOINTS.SEARCH(key, searchValue), {
+const useSearch = (key: string, searchValue: string) => {
+  const [{ result, loading }, fetch, setResult]: Array<any> = useApi(API_ENDPOINTS.SEARCH(key, searchValue), {
     initialFetch: false,
   });
 

@@ -2,19 +2,19 @@ import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import classes from './Shows.module.css';
-import useApi from 'utils/hooks/api/useApi';
 import routes, { generateLink } from 'utils/routes';
 import { Loader, Card, SearchedData } from 'components';
+import { useApi } from 'utils/hooks/api';
 import { firstTenElements } from 'utils/helpers';
-import { useRoot } from 'context/AppContext';
+import { useApp } from 'context/AppContext';
 import { API_ENDPOINTS } from 'utils/constants';
 
-const Shows = ({ tabKey }) => {
+const Shows: React.FC<{ tabKey: string; label: string }> = ({ tabKey }) => {
   const history = useHistory();
-  const [{ result, loading }, fetch] = useApi(API_ENDPOINTS.TOP_RATED_TV_SHOWS, { initialFetch: false });
-  const { searchLoading, searchResult, selectedTab } = useRoot();
+  const [{ result, loading }, fetch]: Array<any> = useApi(API_ENDPOINTS.TOP_RATED_TV_SHOWS, { initialFetch: false });
+  const { searchLoading, searchResult, selectedTab } = useApp();
 
-  const goToShow = id => history.push(generateLink(routes.TV_SHOW, { id }));
+  const goToShow = (id: number) => history.push(generateLink(routes.TV_SHOW, { id }));
 
   useEffect(() => {
     if (selectedTab === tabKey) fetch();
@@ -32,7 +32,7 @@ const Shows = ({ tabKey }) => {
       <div className={classes.wrapper}>
         {result &&
           result.results &&
-          firstTenElements(result?.results).map(r => (
+          firstTenElements(result?.results).map((r: any) => (
             <Card key={r.id} title={r.name} imgUrl={r.poster_path} onClick={() => goToShow(r.id)} />
           ))}
       </div>

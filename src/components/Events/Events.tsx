@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { Tabs, Search, Shows, Movies } from 'components';
-import { useRoot } from 'context/AppContext';
+import { useApp } from 'context/AppContext';
 import { EVENT_TAB_KEYS } from 'utils/constants';
 
 const Events = () => {
-  const { selectedTab, setSelectedTab, searchValue, onSearchHandler } = useRoot();
+  const { selectedTab, setSelectedTab, searchValue, onSearchHandler } = useApp();
 
   return (
     <Tabs

@@ -1,14 +1,14 @@
 import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 
-import useApi from 'utils/hooks/api/useApi';
 import routes, { generateLink } from 'utils/routes';
+import { useApi } from 'utils/hooks/api';
 import { CenteredContent, Details, Loader } from 'components';
 import { API_ENDPOINTS } from 'utils/constants';
 
-const Movie = () => {
+const Show = () => {
   const { id } = useParams();
-  const [{ result, loading }] = useApi(API_ENDPOINTS.MOVIE(id));
+  const [{ result, loading }]: Array<any> = useApi(API_ENDPOINTS.TV_SHOW(id));
   const history = useHistory();
 
   const onReturn = () => history.push(generateLink(routes.ROOT));
@@ -30,4 +30,4 @@ const Movie = () => {
   );
 };
 
-export default Movie;
+export default Show;

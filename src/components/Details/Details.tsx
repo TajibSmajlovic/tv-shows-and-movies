@@ -5,7 +5,15 @@ import { Button, Modal } from 'components';
 import { useToggle } from 'utils/hooks';
 import { API_ENDPOINTS, IMAGE_SIZES } from 'utils/constants';
 
-const Details = ({ backdropImg, posterImg, title, genres, overview, video, onReturn }) => {
+const Details: React.FC<{
+  backdropImg?: string;
+  posterImg?: string;
+  title?: string;
+  genres?: Array<{ id: number; name: string }>;
+  overview?: string;
+  video?: any;
+  onReturn: () => void;
+}> = ({ backdropImg, posterImg, title, genres, overview, video, onReturn }) => {
   const [isOpenModal, setIsOpenModal] = useToggle(false);
 
   return (
@@ -41,9 +49,7 @@ const Details = ({ backdropImg, posterImg, title, genres, overview, video, onRet
         <div className={classes.info}>
           <h1>{title}</h1>
 
-          {genres.map(g => (
-            <span key={g.id}>{g.name}</span>
-          ))}
+          {genres && genres.map(g => <span key={g.id}>{g.name}</span>)}
 
           <p>{overview}</p>
         </div>

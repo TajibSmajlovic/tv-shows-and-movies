@@ -5,7 +5,7 @@ import Root from 'components/Root/Root';
 import { AppProvider } from 'context/AppContext';
 import { Container, CenteredContent, Loader } from 'components';
 
-const App = () => (
+const App: React.FC = () => (
   <BrowserRouter>
     <Suspense
       fallback={

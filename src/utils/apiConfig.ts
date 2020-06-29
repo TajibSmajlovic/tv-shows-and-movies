@@ -4,6 +4,6 @@ const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
 });
 
-export const getData = response => response.data;
+export const getData = (response: { data: Object }) => response.data;
 
 export default instance;

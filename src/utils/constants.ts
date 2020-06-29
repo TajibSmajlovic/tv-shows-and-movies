@@ -27,9 +27,9 @@ export const IMAGE_SIZES = {
 export const API_ENDPOINTS = {
   TOP_RATED_MOVIES: `movie/top_rated?api_key=${API_KEY}`,
   TOP_RATED_TV_SHOWS: `tv/top_rated?api_key=${API_KEY}`,
-  TV_SHOW: id => `tv/${id}?api_key=${API_KEY}&append_to_response=videos`,
-  MOVIE: id => `movie/${id}?api_key=${API_KEY}&append_to_response=videos`,
-  SEARCH: (name, searchvalue) => `search/${name}?api_key=${API_KEY}&query=${searchvalue}`,
-  IMAGE: (imgUrl, imgSize = IMAGE_SIZES.ORIGINAL) => `https://image.tmdb.org/t/p/${imgSize}/${imgUrl}`,
-  YOUTUBE: key => `https://www.youtube.com/embed/${key}`,
+  TV_SHOW: (id: number) => `tv/${id}?api_key=${API_KEY}&append_to_response=videos`,
+  MOVIE: (id: number) => `movie/${id}?api_key=${API_KEY}&append_to_response=videos`,
+  SEARCH: (name: string, searchvalue: string) => `search/${name}?api_key=${API_KEY}&query=${searchvalue}`,
+  IMAGE: (imgUrl: string, imgSize = IMAGE_SIZES.ORIGINAL) => `https://image.tmdb.org/t/p/${imgSize}/${imgUrl}`,
+  YOUTUBE: (key: string) => `https://www.youtube.com/embed/${key}`,
 };

@@ -6,8 +6,7 @@ import { EVENT_TAB_KEYS } from 'utils/constants';
 
 const AppContext = createContext();
 
-export const AppProvider = props => {
-  // const [isInitialized, setIsInitialized] = useState(false);
+export const AppProvider = ({ children }) => {
   const [selectedTab, setSelectedTab] = useState(EVENT_TAB_KEYS.TV);
   const [inputValue, setInputValue] = useState('');
   const searchValue = useDebounce(inputValue);
@@ -24,33 +23,18 @@ export const AppProvider = props => {
     [setInputValue, inputValue]
   );
 
-  // const initialize = useCallback(async () => {
-  //   try {
-  //     setIsInitialized(false);
-  //   } catch (error) {
-  //   } finally {
-  //     setIsInitialized(true);
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   initialize();
-  // }, [initialize]);
-
   const context = useMemo(
     () => ({ selectedTab, setSelectedTab, onSearchHandler, searchValue, searchLoading, searchResult }),
     [selectedTab, setSelectedTab, onSearchHandler, searchValue, searchLoading, searchResult]
   );
 
-  // if (!isInitialized) return 'Loading...';
-
-  return <AppContext.Provider value={context}>{props.children}</AppContext.Provider>;
+  return <AppContext.Provider value={context}>{children}</AppContext.Provider>;
 };
 
-export function useRoot() {
+export function useApp() {
   const context = useContext(AppContext);
   if (!context) {
-    throw new Error(`useRoot must be used within a RootProvider`);
+    throw new Error(`useApp must be used within a AppProvider`);
   }
   return context;
 }

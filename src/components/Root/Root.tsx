@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 
 import routes from 'utils/routes';
 
-const Root = () => (
+const Root: React.FC = () => (
   <Switch>
     {Object.values(routes).map(r => (
       <Route key={r.id} path={r.path} exact={r.exact} component={r.Component} />

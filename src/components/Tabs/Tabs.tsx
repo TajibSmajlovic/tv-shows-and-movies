@@ -2,11 +2,16 @@ import React from 'react';
 
 import classes from './Tabs.module.css';
 
-const Tabs = ({ selected, handleClick, search, children }) => {
+const Tabs: React.FC<{
+  selected: string;
+  handleClick: (key: string) => void;
+  search: React.ReactNode;
+  children: React.ReactNode | any;
+}> = ({ selected, handleClick, search, children }) => {
   return (
     <div>
       <ul className={classes.tabs}>
-        {children.map((elem, index) => {
+        {children.map((elem: any, index: number) => {
           const { label, tabKey } = elem.props;
 
           return (
@@ -24,7 +29,7 @@ const Tabs = ({ selected, handleClick, search, children }) => {
       {search && search}
 
       {children &&
-        children.map((elem, index) => {
+        children.map((elem: any, index: number) => {
           const { label, tabKey } = elem.props;
 
           return (
