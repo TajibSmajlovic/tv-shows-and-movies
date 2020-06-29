@@ -1,19 +1,11 @@
-.wrapper {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  background-color: rgba(245, 245, 245, 0.57);
-  border-radius: 3px;
-}
-
 .title {
   margin-bottom: 1rem;
+  width: 100%;
+  color: var(--white);
 }
 
 .noData {
   min-height: 200px;
-  background-color: rgba(245, 245, 245, 0.57);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,14 +13,4 @@
 
 .noData h1 {
   text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .wrapper {
-    width: 100%;
-    flex-wrap: nowrap;
-    justify-content: normal;
-    padding: 0 1rem;
-    overflow-x: auto;
-  }
 }

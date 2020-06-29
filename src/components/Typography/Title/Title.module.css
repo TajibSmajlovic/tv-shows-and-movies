@@ -1,9 +1,9 @@
 .title {
-  padding: 0 0.5rem;
+  padding: 0 1rem;
   font-size: 1.125rem;
   font-weight: 500;
   line-height: 1.44;
-  color: var(--white);
+  color: var(--light);
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
