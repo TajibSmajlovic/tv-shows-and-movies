@@ -1,7 +1,7 @@
 .button {
   background-color: transparent;
   border: none;
-  color: var(--dark);
+  color: var(--white);
   outline: none;
   cursor: pointer;
   font-weight: bold;

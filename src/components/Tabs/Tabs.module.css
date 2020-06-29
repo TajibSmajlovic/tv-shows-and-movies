@@ -8,13 +8,23 @@
 }
 
 .tab {
-  width: 110px;
+  width: 120px;
   margin: 0.5rem 0;
   padding: 1rem 0;
   box-sizing: border-box;
   text-align: center;
   cursor: pointer;
+  color: var(--white);
+  letter-spacing: 2px;
+  font-weight: bold;
+  text-transform: uppercase;
   border-bottom: 4px solid transparent;
+}
+
+.title {
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 4px;
 }
 
 .tab:hover,

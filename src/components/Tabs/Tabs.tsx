@@ -32,11 +32,11 @@ const Tabs: React.FC<Props> = ({ selected, handleClick, search, children }) => {
 
       {children &&
         children.map((elem: any, index: number) => {
-          const { label, tabKey } = elem.props;
+          const { label, tabKey, showTitle = false } = elem.props;
 
           return (
             <div key={index} className={selected !== tabKey ? classes.none : ''}>
-              <h1>{label}</h1>
+              {showTitle && <h1 className={classes.title}>{label}</h1>}
               {children[index]}
             </div>
           );

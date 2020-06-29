@@ -2,7 +2,6 @@ import React from 'react';
 
 import classes from './SearchedData.module.css';
 import { Card } from 'components';
-import { CARD_SIZES } from 'utils/constants';
 
 interface Props {
   data: Array<{ id: number; name?: string; title?: string; poster_path?: string }>;
@@ -16,19 +15,9 @@ const SearchedData: React.FC<Props> = ({ data, onClick }) =>
     </div>
   ) : (
     <>
-      <h1 className={classes.title}>Searched results:</h1>
-
-      <div className={classes.wrapper}>
-        {data.map(d => (
-          <Card
-            key={d.id}
-            title={d.name || d.title || ''}
-            imgUrl={d.poster_path}
-            size={CARD_SIZES.SMALL}
-            onClick={() => onClick(d.id)}
-          />
-        ))}
-      </div>
+      {data.map(d => (
+        <Card key={d.id} title={d.name || d.title || ''} imgUrl={d.poster_path} onClick={() => onClick(d.id)} />
+      ))}
     </>
   );
 

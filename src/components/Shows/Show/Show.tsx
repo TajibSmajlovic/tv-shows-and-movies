@@ -21,7 +21,7 @@ const Show = () => {
     <Details
       backdropImg={result?.backdrop_path}
       posterImg={result?.poster_path}
-      title={result?.title}
+      title={result?.name}
       genres={result?.genres || []}
       overview={result?.overview}
       video={result?.videos.results[0]}
