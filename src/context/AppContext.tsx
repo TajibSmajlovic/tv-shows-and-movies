@@ -4,16 +4,16 @@ import { useSearch } from 'utils/hooks/api';
 import { useDebounce } from 'utils/hooks';
 import { EVENT_TAB_KEYS } from 'utils/constants';
 
-const AppContext = createContext();
+const AppContext = createContext<any | null>(null);
 
-export const AppProvider = ({ children }) => {
-  const [selectedTab, setSelectedTab] = useState(EVENT_TAB_KEYS.TV);
-  const [inputValue, setInputValue] = useState('');
+export const AppProvider: React.FC<{ children: any }> = ({ children }) => {
+  const [selectedTab, setSelectedTab] = useState<string>(EVENT_TAB_KEYS.TV);
+  const [inputValue, setInputValue] = useState<string>('');
   const searchValue = useDebounce(inputValue);
   const { result: searchResult, loading: searchLoading } = useSearch(selectedTab, searchValue);
 
   const onSearchHandler = useCallback(
-    e => {
+    (e: React.ChangeEvent<HTMLInputElement>) => {
       let keyword = e.target.value;
 
       if (keyword.length > 2) setInputValue(keyword);

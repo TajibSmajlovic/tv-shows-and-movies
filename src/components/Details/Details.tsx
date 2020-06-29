@@ -5,15 +5,17 @@ import { Button, Modal } from 'components';
 import { useToggle } from 'utils/hooks';
 import { API_ENDPOINTS, IMAGE_SIZES } from 'utils/constants';
 
-const Details: React.FC<{
+interface Props {
   backdropImg?: string;
   posterImg?: string;
   title?: string;
   genres?: Array<{ id: number; name: string }>;
   overview?: string;
-  video?: any;
+  video?: { key: string };
   onReturn: () => void;
-}> = ({ backdropImg, posterImg, title, genres, overview, video, onReturn }) => {
+}
+
+const Details: React.FC<Props> = ({ backdropImg, posterImg, title, genres, overview, video, onReturn }) => {
   const [isOpenModal, setIsOpenModal] = useToggle(false);
 
   return (

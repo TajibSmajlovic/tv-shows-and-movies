@@ -2,7 +2,13 @@ import React from 'react';
 
 import classes from './Modal.module.css';
 
-const Modal: React.FC<{ open: any; onClose: () => void; children: React.ReactNode }> = ({ open, onClose, children }) =>
+interface Props {
+  open: any;
+  onClose: () => void;
+  children: React.ReactNode;
+}
+
+const Modal: React.FC<Props> = ({ open, onClose, children }) =>
   open ? (
     <>
       <div className={classes.backdrop} onClick={onClose} />

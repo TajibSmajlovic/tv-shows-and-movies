@@ -4,10 +4,12 @@ import classes from './SearchedData.module.css';
 import { Card } from 'components';
 import { CARD_SIZES } from 'utils/constants';
 
-const SearchedData: React.FC<{
-  data: Array<{ id: number; name?: string; title?: string; poster_path: string }>;
+interface Props {
+  data: Array<{ id: number; name?: string; title?: string; poster_path?: string }>;
   onClick: (id: number) => void;
-}> = ({ data, onClick }) =>
+}
+
+const SearchedData: React.FC<Props> = ({ data, onClick }) =>
   data.length < 1 ? (
     <div className={classes.noData}>
       <h1 className={classes.title}>No searched data found!</h1>

@@ -2,12 +2,14 @@ import React from 'react';
 
 import classes from './Tabs.module.css';
 
-const Tabs: React.FC<{
+interface Props {
   selected: string;
   handleClick: (key: string) => void;
   search: React.ReactNode;
-  children: React.ReactNode | any;
-}> = ({ selected, handleClick, search, children }) => {
+  children: any;
+}
+
+const Tabs: React.FC<Props> = ({ selected, handleClick, search, children }) => {
   return (
     <div>
       <ul className={classes.tabs}>
