@@ -19,7 +19,7 @@ interface Props {
 const Details: React.FC<Props> = ({ backdropImg, posterImg, title, genres, overview, video, rating, onReturn }) => {
   const [isOpenModal, setIsOpenModal] = useToggle(false);
 
-  const handleIFramwWidth = () => {
+  const handleIFrameWidth = () => {
     let width: number = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
     return width <= 610 ? width * 0.8 : 600;
@@ -72,7 +72,7 @@ const Details: React.FC<Props> = ({ backdropImg, posterImg, title, genres, overv
             title={title}
             allowFullScreen
             height="340"
-            width={handleIFramwWidth()}
+            width={handleIFrameWidth()}
             src={API_ENDPOINTS.YOUTUBE(video.key)}
           />
         </Modal>

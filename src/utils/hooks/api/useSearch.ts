@@ -10,8 +10,6 @@ const useSearch = (key: string, searchValue: string) => {
 
   useEffect(() => {
     if (searchValue.length > 2) fetch();
-
-    return () => setResult(null);
   }, [searchValue, fetch, setResult]);
 
   useEffect(() => {

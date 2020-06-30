@@ -4,7 +4,7 @@ import { useSearch } from 'utils/hooks/api';
 import { useDebounce } from 'utils/hooks';
 import { EVENT_TAB_KEYS } from 'utils/constants';
 
-const AppContext = createContext<any | null>(null);
+const AppContext = createContext<any>(null);
 
 export const AppProvider: React.FC<{ children: any }> = ({ children }) => {
   const [selectedTab, setSelectedTab] = useState<string>(EVENT_TAB_KEYS.TV);

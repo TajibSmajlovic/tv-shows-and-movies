@@ -3,13 +3,13 @@ import React from 'react';
 import classes from './Tabs.module.css';
 
 interface Props {
+  Search: React.ReactNode;
   selected: string;
   handleClick: (key: string) => void;
-  search: React.ReactNode;
   children: any;
 }
 
-const Tabs: React.FC<Props> = ({ selected, handleClick, search, children }) => {
+const Tabs: React.FC<Props> = ({ Search, selected, handleClick, children }) => {
   return (
     <div>
       <ul className={classes.tabs}>
@@ -28,7 +28,7 @@ const Tabs: React.FC<Props> = ({ selected, handleClick, search, children }) => {
         })}
       </ul>
 
-      {search && search}
+      {Search && Search}
 
       {children &&
         children.map((elem: any, index: number) => {

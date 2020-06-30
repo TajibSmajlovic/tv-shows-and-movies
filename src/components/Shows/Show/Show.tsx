@@ -3,10 +3,10 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import routes, { generateLink } from 'utils/routes';
 import { useApi } from 'utils/hooks/api';
-import { CenteredContent, Details, Loader } from 'components';
+import { Details, Loader } from 'components';
 import { API_ENDPOINTS, VIDEO_TYPES } from 'utils/constants';
 
-const Show = () => {
+const Show: React.FC = () => {
   const { id } = useParams();
   const [{ result, loading }]: Array<any> = useApi(API_ENDPOINTS.TV_SHOW(id));
   const history = useHistory();
@@ -14,9 +14,7 @@ const Show = () => {
   const onReturn = () => history.push(generateLink(routes.ROOT));
 
   return loading ? (
-    <CenteredContent>
-      <Loader />
-    </CenteredContent>
+    <Loader />
   ) : (
     <Details
       backdropImg={result?.backdrop_path}

@@ -11,7 +11,7 @@ const Events: React.FC = () => {
     <Tabs
       selected={selectedTab}
       handleClick={setSelectedTab}
-      search={<Search value={searchValue} onChange={onSearchHandler} />}
+      Search={<Search value={searchValue} onChange={onSearchHandler} />}
     >
       <Movies label="Movies" tabKey={EVENT_TAB_KEYS.MOVIES} />
       <Shows label="Tv shows" tabKey={EVENT_TAB_KEYS.TV} />

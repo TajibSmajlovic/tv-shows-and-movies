@@ -2,11 +2,11 @@ import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 
 import routes, { generateLink } from 'utils/routes';
-import { CenteredContent, Details, Loader } from 'components';
+import { Details, Loader } from 'components';
 import { useApi } from 'utils/hooks/api';
 import { API_ENDPOINTS, VIDEO_TYPES } from 'utils/constants';
 
-const Movie = () => {
+const Movie: React.FC = () => {
   const { id } = useParams();
   const [{ result, loading }]: Array<any> = useApi(API_ENDPOINTS.MOVIE(id));
   const history = useHistory();
@@ -14,9 +14,7 @@ const Movie = () => {
   const onReturn = () => history.push(generateLink(routes.ROOT));
 
   return loading ? (
-    <CenteredContent>
-      <Loader />
-    </CenteredContent>
+    <Loader />
   ) : (
     <Details
       backdropImg={result?.backdrop_path}
