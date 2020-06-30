@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import classes from './Movies.module.css';
 import routes, { generateLink } from 'utils/routes';
-import { Loader, Card, SearchedData } from 'components';
+import { Loader, Card, SearchedData, CenteredContent } from 'components';
 import { useApi } from 'utils/hooks/api';
 import { firstTenElements } from 'utils/helpers';
 import { useApp } from 'context/AppContext';
@@ -21,7 +21,9 @@ const Movies: React.FC<{ tabKey: string; label: string; showTitle?: boolean }> =
   const goToMovie = (id: number) => history.push(generateLink(routes.MOVIE, { id }));
 
   return loading || searchLoading ? (
-    <Loader />
+    <CenteredContent>
+      <Loader />
+    </CenteredContent>
   ) : (
     <>
       <div className={classes.wrapper}>

@@ -9,11 +9,6 @@
   box-shadow: rgba(0, 0, 0, 0.05) 0px 3px 6px 0px;
 }
 
-.card:last-child,
-.cardSm:last-child {
-  margin-right: 0;
-}
-
 .card:hover,
 .cardSm:hover {
   box-shadow: rgba(256, 256, 256, 0.22) 0px 2px 21px 0px;
@@ -36,4 +31,10 @@
 
 .imgSm {
   height: 220px;
+}
+
+@supports (-moz-appearance: none) {
+  .img {
+    width: -moz-available;
+  }
 }

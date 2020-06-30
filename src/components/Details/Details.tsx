@@ -12,11 +12,18 @@ interface Props {
   genres?: Array<{ id: number; name: string }>;
   overview?: string;
   video?: { key: string };
+  rating?: number;
   onReturn: () => void;
 }
 
-const Details: React.FC<Props> = ({ backdropImg, posterImg, title, genres, overview, video, onReturn }) => {
+const Details: React.FC<Props> = ({ backdropImg, posterImg, title, genres, overview, video, rating, onReturn }) => {
   const [isOpenModal, setIsOpenModal] = useToggle(false);
+
+  const handleIFramwWidth = () => {
+    let width: number = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+    return width <= 610 ? width * 0.8 : 600;
+  };
 
   return (
     <>
@@ -35,11 +42,15 @@ const Details: React.FC<Props> = ({ backdropImg, posterImg, title, genres, overv
       <main className={classes.main}>
         <div className={classes.poster}>
           {posterImg && (
-            <img
-              className={classes.posterImg}
-              src={API_ENDPOINTS.IMAGE(posterImg, IMAGE_SIZES.SMALL)}
-              alt={title || 'Poster image'}
-            />
+            <>
+              {rating && <span className={classes.rating}>{rating}</span>}
+
+              <img
+                className={classes.posterImg}
+                src={API_ENDPOINTS.IMAGE(posterImg, IMAGE_SIZES.SMALL)}
+                alt={title || 'Poster image'}
+              />
+            </>
           )}
           {video && (
             <div>
@@ -59,7 +70,12 @@ const Details: React.FC<Props> = ({ backdropImg, posterImg, title, genres, overv
 
       {video && (
         <Modal open={isOpenModal} onClose={setIsOpenModal}>
-          <iframe title="Youtube video" width="600" height="350" src={API_ENDPOINTS.YOUTUBE(video.key)}></iframe>
+          <iframe
+            title="Youtube video"
+            width={handleIFramwWidth()}
+            height="340"
+            src={API_ENDPOINTS.YOUTUBE(video.key)}
+          ></iframe>
         </Modal>
       )}
     </>

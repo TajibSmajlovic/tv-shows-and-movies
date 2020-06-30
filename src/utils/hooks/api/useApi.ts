@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 import API, { getData } from 'utils/apiConfig';
 import { HTTP_VERBS } from 'utils/constants';
 
-const useApi = (url: string, { initialFetch = true, client = API, verb = HTTP_VERBS.GET, data = null } = {}) => {
+const useApi = (url: string, { initialFetch = true, client = API, verb = HTTP_VERBS.GET } = {}) => {
   const [result, setResult] = useState<any>(null);
   const [error, setError] = useState<any>(null);
   const [loading, setLoading] = useState<any>(initialFetch);

@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 :root {
   --white: #ffffff;
   --red: #b00;
   --blue: #40a4c8;
   --grey: #9ea0a5;
+  --lightGrey: #b3bac5;
   --dark: #3e3f42;
   --light: #f6f7f9;
 }

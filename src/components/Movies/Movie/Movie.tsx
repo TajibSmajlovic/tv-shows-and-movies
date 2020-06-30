@@ -25,6 +25,7 @@ const Movie = () => {
       genres={result?.genres || []}
       overview={result?.overview}
       video={result?.videos.results[0]}
+      rating={result?.vote_average}
       onReturn={onReturn}
     />
   );

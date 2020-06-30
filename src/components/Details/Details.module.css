@@ -34,7 +34,7 @@
 }
 
 .info span {
-  color: var(--grey);
+  color: var(--lightGrey);
   margin-right: 0.5rem;
   font-weight: bold;
 }
@@ -42,7 +42,18 @@
 .info p {
   color: var(--white);
   font-size: 1.2rem;
+  line-height: 1.43;
   text-align: justify;
+}
+
+.rating {
+  position: relative;
+  top: 16px;
+  padding: 0.4rem 1rem;
+  background-color: var(--blue);
+  border-radius: 20px;
+  color: var(--white);
+  font-weight: bold;
 }
 
 @media (min-width: 768px) {
@@ -65,5 +76,10 @@
 
   .posterImg {
     margin-bottom: 1rem;
+  }
+
+  .rating {
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
