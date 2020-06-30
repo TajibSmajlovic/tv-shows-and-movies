@@ -56,6 +56,10 @@
   font-weight: bold;
 }
 
+iframe {
+  border: none;
+}
+
 @media (min-width: 768px) {
   .main {
     display: flex;
@@ -66,8 +70,8 @@
     margin: 3rem 0;
   }
 
-  .info {
-    padding: 0 2rem;
+  .infoWithRating {
+    margin-top: 2rem;
   }
 
   .poster {
@@ -76,10 +80,11 @@
 
   .posterImg {
     margin-bottom: 1rem;
+    margin-right: 2rem;
   }
 
   .rating {
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-75%);
   }
 }

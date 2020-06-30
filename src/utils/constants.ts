@@ -17,6 +17,11 @@ export const EVENT_TAB_KEYS = {
   MOVIES: 'movie',
 };
 
+export const VIDEO_TYPES = {
+  TEASER: 'Teaser',
+  TRAILER: 'Trailer',
+};
+
 export const IMAGE_SIZES = {
   SMALL: 'w300',
   MEDIUM: 'w780',
@@ -31,5 +36,6 @@ export const API_ENDPOINTS = {
   MOVIE: (id: number) => `movie/${id}?api_key=${API_KEY}&append_to_response=videos`,
   SEARCH: (name: string, searchvalue: string) => `search/${name}?api_key=${API_KEY}&query=${searchvalue}`,
   IMAGE: (imgUrl: string, imgSize = IMAGE_SIZES.ORIGINAL) => `https://image.tmdb.org/t/p/${imgSize}/${imgUrl}`,
-  YOUTUBE: (key: string) => `https://www.youtube.com/embed/${key}`,
+  YOUTUBE: (key: string, autoplay: boolean = true) =>
+    `https://www.youtube.com/embed/${key}${autoplay ? '?autoplay=1' : ''}`,
 };

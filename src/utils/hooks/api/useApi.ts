@@ -6,7 +6,7 @@ import { HTTP_VERBS } from 'utils/constants';
 const useApi = (url: string, { initialFetch = true, client = API, verb = HTTP_VERBS.GET } = {}) => {
   const [result, setResult] = useState<any>(null);
   const [error, setError] = useState<any>(null);
-  const [loading, setLoading] = useState<any>(initialFetch);
+  const [loading, setLoading] = useState<boolean>(initialFetch);
 
   const execute = useCallback(() => {
     let route = null;

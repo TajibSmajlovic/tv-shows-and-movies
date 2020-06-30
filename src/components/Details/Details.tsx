@@ -3,7 +3,7 @@ import React from 'react';
 import classes from './Details.module.css';
 import { Button, Modal } from 'components';
 import { useToggle } from 'utils/hooks';
-import { API_ENDPOINTS, IMAGE_SIZES } from 'utils/constants';
+import { API_ENDPOINTS, IMAGE_SIZES, POSTER_PLACEHOLDER } from 'utils/constants';
 
 interface Props {
   backdropImg?: string;
@@ -41,17 +41,15 @@ const Details: React.FC<Props> = ({ backdropImg, posterImg, title, genres, overv
 
       <main className={classes.main}>
         <div className={classes.poster}>
-          {posterImg && (
-            <>
-              {rating && <span className={classes.rating}>{rating}</span>}
+          <>
+            {rating && rating !== 0 && <span className={classes.rating}>{rating}</span>}
+            <img
+              className={classes.posterImg}
+              src={posterImg ? API_ENDPOINTS.IMAGE(posterImg, IMAGE_SIZES.SMALL) : POSTER_PLACEHOLDER}
+              alt={title || 'Poster image'}
+            />
+          </>
 
-              <img
-                className={classes.posterImg}
-                src={API_ENDPOINTS.IMAGE(posterImg, IMAGE_SIZES.SMALL)}
-                alt={title || 'Poster image'}
-              />
-            </>
-          )}
           {video && (
             <div>
               <Button onClick={setIsOpenModal}>Play trailer</Button>
@@ -59,7 +57,7 @@ const Details: React.FC<Props> = ({ backdropImg, posterImg, title, genres, overv
           )}
         </div>
 
-        <div className={classes.info}>
+        <div className={rating ? [classes.info, classes.infoWithRating].join(' ') : classes.info}>
           <h1>{title}</h1>
 
           {genres && genres.map(g => <span key={g.id}>{g.name}</span>)}
@@ -71,11 +69,12 @@ const Details: React.FC<Props> = ({ backdropImg, posterImg, title, genres, overv
       {video && (
         <Modal open={isOpenModal} onClose={setIsOpenModal}>
           <iframe
-            title="Youtube video"
-            width={handleIFramwWidth()}
+            title={title}
+            allowFullScreen
             height="340"
+            width={handleIFramwWidth()}
             src={API_ENDPOINTS.YOUTUBE(video.key)}
-          ></iframe>
+          />
         </Modal>
       )}
     </>
