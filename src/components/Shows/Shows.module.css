@@ -1,6 +1,12 @@
 .wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
   margin: 0 -1rem;
+}
+
+@media (min-width: 668px) {
+  .wrapper {
+    justify-content: space-between;
+  }
 }

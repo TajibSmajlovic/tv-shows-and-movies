@@ -1,0 +1,12 @@
+.noInternet {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.noInternet h1 {
+  color: var(--white);
+  font-size: 2rem;
+  text-align: center;
+}

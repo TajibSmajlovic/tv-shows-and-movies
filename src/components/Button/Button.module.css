@@ -13,3 +13,22 @@
 .button:hover {
   color: var(--blue);
 }
+
+.rounded {
+  width: 238px;
+  padding: 0.7rem 2rem;
+  background-color: transparent;
+  color: var(--white);
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 39px;
+  border: solid 1px var(--grey);
+}
+
+.rounded:hover,
+.rounded:focus {
+  background-color: rgba(0, 0, 0, 0.3);
+  outline: none;
+}

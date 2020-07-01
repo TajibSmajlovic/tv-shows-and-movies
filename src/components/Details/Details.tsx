@@ -19,12 +19,6 @@ interface Props {
 const Details: React.FC<Props> = ({ backdropImg, posterImg, title, genres, overview, video, rating, onReturn }) => {
   const [isOpenModal, setIsOpenModal] = useToggle(false);
 
-  const handleIFrameWidth = () => {
-    let width: number = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-
-    return width <= 610 ? width * 0.8 : 600;
-  };
-
   return (
     <>
       {backdropImg && (
@@ -52,7 +46,9 @@ const Details: React.FC<Props> = ({ backdropImg, posterImg, title, genres, overv
 
           {video && (
             <div>
-              <Button onClick={setIsOpenModal}>Play trailer</Button>
+              <Button isRounded onClick={setIsOpenModal}>
+                Play trailer
+              </Button>
             </div>
           )}
         </div>
@@ -60,7 +56,7 @@ const Details: React.FC<Props> = ({ backdropImg, posterImg, title, genres, overv
         <div className={rating ? [classes.info, classes.infoWithRating].join(' ') : classes.info}>
           <h1>{title}</h1>
 
-          {genres && genres.map(g => <span key={g.id}>{g.name}</span>)}
+          {genres && <span>{genres.map(g => g.name).join(' | ')}</span>}
 
           <p>{overview}</p>
         </div>
@@ -68,13 +64,9 @@ const Details: React.FC<Props> = ({ backdropImg, posterImg, title, genres, overv
 
       {video && (
         <Modal open={isOpenModal} onClose={setIsOpenModal}>
-          <iframe
-            title={title}
-            allowFullScreen
-            height="340"
-            width={handleIFrameWidth()}
-            src={API_ENDPOINTS.YOUTUBE(video.key)}
-          />
+          <div className={classes.video}>
+            <iframe allowFullScreen title={title} src={API_ENDPOINTS.YOUTUBE(video.key)} />
+          </div>
         </Modal>
       )}
     </>
