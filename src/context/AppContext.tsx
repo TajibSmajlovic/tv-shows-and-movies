@@ -17,7 +17,6 @@ export const AppProvider: React.FC<{ children: any }> = ({ children }) => {
       let keyword = e.target.value;
 
       if (keyword.length > 2) setInputValue(keyword);
-
       if (inputValue !== '' && keyword.length < 3) setInputValue('');
     },
     [setInputValue, inputValue]
@@ -31,12 +30,12 @@ export const AppProvider: React.FC<{ children: any }> = ({ children }) => {
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;
 };
 
-export function useApp() {
+export const useApp = () => {
   const context = useContext(AppContext);
-  if (!context) {
-    throw new Error(`useApp must be used within a AppProvider`);
-  }
+
+  if (!context) throw new Error(`useApp must be used within AppProvider`);
+
   return context;
-}
+};
 
 export const Consumer = AppContext.Consumer;

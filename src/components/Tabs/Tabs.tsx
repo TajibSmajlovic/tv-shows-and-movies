@@ -37,6 +37,7 @@ const Tabs: React.FC<Props> = ({ Search, selected, handleClick, children }) => {
           return (
             <div key={index} className={selected !== tabKey ? classes.none : ''}>
               {showTitle && <h1 className={classes.title}>{label}</h1>}
+
               {children[index]}
             </div>
           );

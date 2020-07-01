@@ -1,6 +1,7 @@
-This app was created with _React_. App uses _https://developers.themoviedb.org/3_ API for fetching data.
-
 ## Live Demo (https://tv-shows-and-movies-8e36e.web.app)
+
+This app was created with _React_ and _TypeScript_.
+App uses _https://developers.themoviedb.org/3_ API for fetching data.
 
 ## Instructions to run the app locally:
 

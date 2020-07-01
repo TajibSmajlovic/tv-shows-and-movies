@@ -1,7 +1,7 @@
 import React from 'react';
 
 import classes from './Details.module.css';
-import { Button, Modal } from 'components';
+import { Button, Modal, Text } from 'components';
 import { useToggle } from 'utils/hooks';
 import { API_ENDPOINTS, IMAGE_SIZES, POSTER_PLACEHOLDER } from 'utils/constants';
 
@@ -37,6 +37,7 @@ const Details: React.FC<Props> = ({ backdropImg, posterImg, title, genres, overv
         <div className={classes.poster}>
           <>
             {rating && rating !== 0 && <span className={classes.rating}>{rating}</span>}
+
             <img
               className={classes.posterImg}
               src={posterImg ? API_ENDPOINTS.IMAGE(posterImg, IMAGE_SIZES.SMALL) : POSTER_PLACEHOLDER}
@@ -45,27 +46,25 @@ const Details: React.FC<Props> = ({ backdropImg, posterImg, title, genres, overv
           </>
 
           {video && (
-            <div>
-              <Button isRounded onClick={setIsOpenModal}>
-                Play trailer
-              </Button>
-            </div>
+            <Button isRounded onClick={setIsOpenModal}>
+              Play trailer
+            </Button>
           )}
         </div>
 
         <div className={rating ? [classes.info, classes.infoWithRating].join(' ') : classes.info}>
-          <h1>{title}</h1>
+          {title && <h1>{title}</h1>}
 
           {genres && <span>{genres.map(g => g.name).join(' | ')}</span>}
 
-          <p>{overview}</p>
+          {overview && <Text>{overview}</Text>}
         </div>
       </main>
 
       {video && (
         <Modal open={isOpenModal} onClose={setIsOpenModal}>
           <div className={classes.video}>
-            <iframe allowFullScreen title={title} src={API_ENDPOINTS.YOUTUBE(video.key)} />
+            <iframe allowFullScreen title={title || 'Trailer'} src={API_ENDPOINTS.YOUTUBE(video.key)} />
           </div>
         </Modal>
       )}

@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 
 import classes from './Card.module.css';
-import { Title, Text } from 'components';
+import { Title } from 'components';
 import { POSTER_PLACEHOLDER, CARD_SIZES, API_ENDPOINTS, IMAGE_SIZES } from 'utils/constants';
 
 interface Props {
@@ -20,7 +20,8 @@ const Card: React.FC<Props> = memo(({ title, imgUrl, size = CARD_SIZES.DEFAULT, 
         alt={title}
       />
     </div>
-    {CARD_SIZES.DEFAULT ? <Title centered>{title}</Title> : <Text>{title}</Text>}
+
+    <Title centered>{title}</Title>
   </div>
 ));
 

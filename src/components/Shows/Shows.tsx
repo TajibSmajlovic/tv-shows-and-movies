@@ -5,8 +5,8 @@ import classes from './Shows.module.css';
 import routes, { generateLink } from 'utils/routes';
 import { Loader, Card, SearchedData } from 'components';
 import { useApi } from 'utils/hooks/api';
-import { firstTenElements } from 'utils/helpers';
 import { useApp } from 'context/AppContext';
+import { firstTenElements } from 'utils/helpers';
 import { API_ENDPOINTS } from 'utils/constants';
 
 interface Props {
@@ -30,11 +30,10 @@ const Shows: React.FC<Props> = ({ tabKey }) => {
     <Loader />
   ) : (
     <div className={classes.wrapper}>
-      {searchResult && searchResult.results ? (
+      {searchResult?.results ? (
         <SearchedData data={searchResult.results} onClick={goToShow} />
       ) : (
-        result &&
-        result.results &&
+        result?.results &&
         firstTenElements(result?.results).map((r: any) => (
           <Card key={r.id} title={r.name} imgUrl={r.poster_path} onClick={() => goToShow(r.id)} />
         ))
