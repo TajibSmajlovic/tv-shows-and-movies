@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import classes from './Shows.module.css';
@@ -20,7 +20,12 @@ const Shows: React.FC<Props> = ({ tabKey }) => {
   const [{ result, loading }, fetch]: Array<any> = useApi(API_ENDPOINTS.TOP_RATED_TV_SHOWS, { initialFetch: false });
   const { searchLoading, searchResult, selectedTab } = useApp();
 
-  const goToShow = (id: number) => history.push(generateLink(routes.TV_SHOW, { id }));
+  const goToShow = useCallback(
+    (id: number) => {
+      history.push(generateLink(routes.TV_SHOW, { id }));
+    },
+    [history]
+  );
 
   useEffect(() => {
     if (selectedTab === tabKey) fetch();
@@ -35,7 +40,7 @@ const Shows: React.FC<Props> = ({ tabKey }) => {
       ) : (
         result?.results &&
         firstTenElements(result?.results).map((r: any) => (
-          <Card key={r.id} title={r.name} imgUrl={r.poster_path} onClick={() => goToShow(r.id)} />
+          <Card key={r.id} id={r.id} title={r.name} imgUrl={r.poster_path} onClick={goToShow} />
         ))
       )}
     </div>

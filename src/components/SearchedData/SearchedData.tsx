@@ -16,7 +16,7 @@ const SearchedData: React.FC<Props> = ({ data, onClick }) =>
   ) : (
     <>
       {data.map(d => (
-        <Card key={d.id} title={d.name || d.title || ''} imgUrl={d.poster_path} onClick={() => onClick(d.id)} />
+        <Card key={d.id} id={d.id} title={d.name || d.title || ''} imgUrl={d.poster_path} onClick={onClick} />
       ))}
     </>
   );

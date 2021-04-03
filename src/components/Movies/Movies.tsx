@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import classes from './Movies.module.css';
@@ -20,7 +20,12 @@ const Movies: React.FC<Props> = ({ tabKey }) => {
   const [{ result, loading }, fetch]: Array<any> = useApi(API_ENDPOINTS.TOP_RATED_MOVIES, { initialFetch: false });
   const { searchLoading, searchResult, selectedTab } = useApp();
 
-  const goToMovie = (id: number) => history.push(generateLink(routes.MOVIE, { id }));
+  const goToMovie = useCallback(
+    (id: number) => {
+      history.push(generateLink(routes.MOVIE, { id }));
+    },
+    [history]
+  );
 
   useEffect(() => {
     if (selectedTab === tabKey) fetch();
@@ -36,7 +41,7 @@ const Movies: React.FC<Props> = ({ tabKey }) => {
         ) : (
           result?.results &&
           firstTenElements(result?.results).map((r: any) => (
-            <Card key={r.id} title={r.title} imgUrl={r.poster_path} onClick={() => goToMovie(r.id)} />
+            <Card key={r.id} id={r.id} title={r.title} imgUrl={r.poster_path} onClick={goToMovie} />
           ))
         )}
       </div>

@@ -5,14 +5,15 @@ import { Title } from 'components';
 import { POSTER_PLACEHOLDER, CARD_SIZES, API_ENDPOINTS, IMAGE_SIZES } from 'utils/constants';
 
 interface Props {
+  id: number;
   title: string;
   imgUrl?: string;
   size?: string;
-  onClick: () => void;
+  onClick: (id: number) => void;
 }
 
-const Card: React.FC<Props> = memo(({ title, imgUrl, size = CARD_SIZES.DEFAULT, onClick }) => (
-  <div className={size === CARD_SIZES.DEFAULT ? classes.card : classes.cardSm} onClick={onClick}>
+const Card: React.FC<Props> = memo(({ id, title, imgUrl, size = CARD_SIZES.DEFAULT, onClick }) => (
+  <div className={size === CARD_SIZES.DEFAULT ? classes.card : classes.cardSm} onClick={() => onClick(id)}>
     <div>
       <img
         className={size === CARD_SIZES.DEFAULT ? classes.img : classes.imgSm}
